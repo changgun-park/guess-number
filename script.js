@@ -4,6 +4,8 @@ let secretNumber = Math.trunc(Math.random() * 20) + 1; // number 1-20
 
 let score = 20;
 
+let highScore = 0;
+
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value); // string
 
@@ -17,6 +19,12 @@ document.querySelector('.check').addEventListener('click', function () {
     document.querySelector('body').style.backgroundColor = '#60b347'; // inline style로 적용된다.
     document.querySelector('.number').style.width = '30rem';
     document.querySelector('.number').textContent = secretNumber;
+
+    // update high score
+    if (score > highScore) {
+      highScore = score;
+      document.querySelector('.highscore').textContent = highScore;
+    }
   }
   // when guess is too high
   else if (guess > secretNumber) {
